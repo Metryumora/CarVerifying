@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQL5Dialect
+        </property>
+        <property name="connection.url">
+            jdbc:mysql://localhost:3306/gai?useSSL=no
+        </property>
+        <property name="connection.driver_class">
+            com.mysql.jdbc.Driver
+        </property>
+        <property name="connection.username">
+            root
+        </property>
+        <property name="connection.password">
+            password
+        </property>
+        <property name="hbm2ddl.auto">
+            create
+        </property>
+        <property name="hibernate.hbm2ddl.auto">
+            create
+        </property>
+        <property name="show_sql">false
+        </property>
+        <property name="hibernate.connection.autocommit">true</property>
+        <property name="connection.autocommit">true</property>
+        <property name="transaction.auto_close_session">true</property>
+        <property name="hibernate.transaction.auto_close_session">true</property>
+        <mapping package="edu.chdtu.carverif.entity"/>
+    </session-factory>
+</hibernate-configuration>
