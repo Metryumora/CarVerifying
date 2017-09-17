@@ -42,14 +42,14 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" />
             </rowConstraints>
             <children>
-                <TextField fx:id="loginTF" prefHeight="22.0" prefWidth="285.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                <TextField fx:id="loginTF" prefHeight="22.0" prefWidth="285.0" text="login" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                     </GridPane.margin>
                 </TextField>
                 <Label text="Ім'я користувача:" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
                 <Label text="Пароль:" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                <PasswordField fx:id="passwordTF" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <PasswordField fx:id="passwordTF" text="password" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                     </GridPane.margin>

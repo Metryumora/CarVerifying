@@ -17,9 +17,12 @@ public class Client {
     private String name;
 
     @Column
+    private String passport;
+
+    @Column
     private String address;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     public Integer getId() {
@@ -54,8 +57,17 @@ public class Client {
         this.birthDate = birthDate;
     }
 
-    public Client(String name, String address, Date birthDate) {
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
+    public Client(String name, String passport, String address, Date birthDate) {
         this.name = name;
+        this.passport = passport;
         this.address = address;
         this.birthDate = birthDate;
     }

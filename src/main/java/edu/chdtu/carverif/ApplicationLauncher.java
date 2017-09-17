@@ -1,6 +1,7 @@
 package edu.chdtu.carverif;
 
 import edu.chdtu.carverif.controllers.MainController;
+import edu.chdtu.carverif.dbutil.SessionInitializer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -22,10 +23,7 @@ public class ApplicationLauncher extends Application {
     }
 
     public static void main(String[] args) {
-        HibernateUtil.getSession();
-        Thread newThread = new Thread();
-        newThread.run();
+        new SessionInitializer().run();
         launch(args);
-
     }
 }

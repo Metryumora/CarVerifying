@@ -1,4 +1,4 @@
-package edu.chdtu.carverif;
+package edu.chdtu.carverif.dbutil;
 
 
 import edu.chdtu.carverif.entity.Client;
@@ -12,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 
 /**
  * Created by Metr_yumora on 28.04.2017.
@@ -53,14 +54,13 @@ public class HibernateUtil {
         getSessionFactory().close();
     }
 
-    public static User getUserByName(String username) {
+    public static User getUserByLogin(String login) {
         try {
-            return getSession().createQuery("from User u where u.name='" + username + "'", User.class).getSingleResult();
+            return getSession().createQuery("from User u where u.login='" + login + "'", User.class).getSingleResult();
         } catch (NoResultException e) {
             System.out.println("No results!");
             return null;
         }
-
     }
 
     public static User getActiveUser() {
@@ -72,7 +72,7 @@ public class HibernateUtil {
     }
 
     public static boolean authUser(String login, String password) {
-        User checkedUser = getUserByName(login);
+        User checkedUser = getUserByLogin(login);
         if (checkedUser != null && checkedUser.verifyPassword(password)) {
             setActiveUser(checkedUser);
             return true;
@@ -83,4 +83,35 @@ public class HibernateUtil {
     public static void logOut() {
         activeUser = null;
     }
+
+
+    public static List<Client> getAllClients() {
+        return getSession().createQuery("FROM Client ", Client.class).list();
+    }
+
+    public static List<Client> getAllClientsByName(String anyMatch) {
+        return getSession().createQuery("FROM Client c where c.name like '%" + anyMatch + "%'", Client.class).list();
+    }
+
+    public static Client getClientByPassport(String passport) {
+        return getSession().createQuery("FROM Client c where c.passport = '" + passport + "'", Client.class).getSingleResult();
+    }
+
+    public static List<Vehicle> getAllVehicles() {
+        return getSession().createQuery("FROM Vehicle ", Vehicle.class).list();
+    }
+
+    public static List<Vehicle> getAllVehiclesByOwner(String anyMatch) {
+        return getSession().createQuery("FROM Vehicle v where v.owner.name like '%" + anyMatch + "%'", Vehicle.class).list();
+    }
+
+    public static List<Verification> getVerificationHistory() {
+        return getSession().createQuery("FROM Verification ", Verification.class).list();
+    }
+
+    public static List<Verification> getVerificationHistoryByCarNumberOrInspector(String anyMatch) {
+        return getSession().createQuery("FROM Verification v where v.user.name like '%" + anyMatch + "%' or v.vehicle.registrationNumber like " +
+                "'%" + anyMatch + "%'", Verification.class).list();
+    }
+
 }

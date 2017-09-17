@@ -19,13 +19,16 @@ public class Verification {
     @Column
     private String result;
 
+    @Column
+    private String remarks;
+
     @ManyToOne
     private User user;
 
     @ManyToOne(targetEntity = Vehicle.class)
     private Vehicle vehicle;
 
-    public Verification(String result, User user, Vehicle vehicle) {
+    public Verification(String result, User user, Vehicle vehicle, String remarks) {
         this.dateTime = new Date();
         this.result = result;
         this.vehicle = vehicle;
@@ -73,5 +76,13 @@ public class Verification {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

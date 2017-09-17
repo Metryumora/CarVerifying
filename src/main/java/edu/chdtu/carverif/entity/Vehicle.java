@@ -12,11 +12,12 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+
+    @Column(unique = true)
     private String registrationNumber;
 
-    @Column
-    private Integer engineNumber;
+    @Column(unique = true)
+    private String engineNumber;
 
     @Column
     private String model;
@@ -24,7 +25,7 @@ public class Vehicle {
     @Column
     private String color;
 
-    @Column
+    @Column(unique = true)
     private String technicalPassport;
 
     @ManyToOne
@@ -46,11 +47,11 @@ public class Vehicle {
         this.registrationNumber = registrationNumber;
     }
 
-    public Integer getEngineNumber() {
+    public String getEngineNumber() {
         return engineNumber;
     }
 
-    public void setEngineNumber(Integer engineNumber) {
+    public void setEngineNumber(String engineNumber) {
         this.engineNumber = engineNumber;
     }
 
@@ -87,7 +88,7 @@ public class Vehicle {
     }
 
     public Vehicle(String registrationNumber,
-                   Integer engineNumber,
+                   String engineNumber,
                    String model,
                    String color,
                    String technicalPassport,

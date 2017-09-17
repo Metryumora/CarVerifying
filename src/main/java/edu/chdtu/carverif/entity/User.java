@@ -11,6 +11,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(unique = true)
+    private String login;
+
     @Column
     private String name;
 
@@ -26,8 +29,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String pass, String position, String rank) {
+    public User(String name, String login, String pass, String position, String rank) {
         this.name = name;
+        this.login = login;
         this.position = position;
         this.rank = rank;
         try {
@@ -86,6 +90,14 @@ public class User {
 
     public void setRank(String rank) {
         this.rank = rank;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     @Override
